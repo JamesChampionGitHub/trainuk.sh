@@ -82,7 +82,7 @@ ptimearrivefour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing
 ptimearrivefive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing"/today | grep -i "ash" | awk '{print $2}' |sed -n '5p')
 
 # variable for delays
-delays=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$date"/today | grep -i -B19 "status late" | grep result | awk '{print $6}' | sed 's/..........//g')
+delays=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$date"/today | grep -i -B50 "status late" | grep -i "result" | awk '{print $6}' | sed 's/..........//g')
 
 delaystime=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$date"/today | grep -i "status late" | awk '{print $4, $5}' | sed 's/.........//g')
 
