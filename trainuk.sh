@@ -13,6 +13,10 @@
 # variable for the time now
 #now=$(date +%H:%M)
 
+printf "\n%s\n" "Current Date and Time:"
+
+date
+
 printf "\n%s\n" "Enter the station you're departing from:"
 
 read depart
@@ -82,7 +86,7 @@ ptimearrivefour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing
 ptimearrivefive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing"/today | grep -i "ash" | awk '{print $2}' |sed -n '5p')
 
 # variable for delays
-delays=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result" | awk '{print $6}' | sed 's/..........//g')
+delays=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B30 "status late" | grep -i "result" | awk '{print $6}' | sed 's/..........//g')
 
 delaystime=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i "status late" | awk '{print $4, $5}' | sed 's/.........//g')
 
