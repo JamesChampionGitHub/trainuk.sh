@@ -86,7 +86,15 @@ ptimearrivefour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing
 ptimearrivefive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing"/today | grep -i "ash" | awk '{print $2}' |sed -n '5p')
 
 # variable for delays
-delays=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B30 "status late" | grep -i "result" | awk '{print $6}' | sed 's/..........//g')
+delaysone=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result0" | awk '{print $6}' | sed 's/..........//g')
+
+delaystwo=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result1" | awk '{print $6}' | sed 's/..........//g')
+
+delaysthree=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result2" | awk '{print $6}' | sed 's/..........//g')
+
+delaysfour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result3" | awk '{print $6}' | sed 's/..........//g')
+
+delaysfive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result4" | awk '{print $6}' | sed 's/..........//g')
 
 delaystime=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i "status late" | awk '{print $4, $5}' | sed 's/.........//g')
 
@@ -94,7 +102,7 @@ delaystime=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$yea
 results () {
 printf "\n%s\n%s\n%s\n%s\n%s\n%s\n" "DepartArrive" """$timeleavingone"" ""$timearriveone""" """$timeleavingtwo"" ""$timearrivetwo""" """$timeleavingthree"" ""$timearrivethree""" """$timeleavingfour"" ""$timearrivefour""" """$timeleavingfive"" ""$timearrivefive"""
 
-printf "%s\n" """$delays"" ""$delaystime""" | pr -2 -t -s
+#printf "\n%s\n%s\n" """$delaysone"" ""$delaystime""" | pr -2 -t -s
 }
 
 # function for picked time
