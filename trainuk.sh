@@ -1,5 +1,7 @@
 #!/bin/sh
 
+## Various discarded code
+
 #curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$date"/today | grep "nofollow" | tail --lines 4 | awk '{print $3}'| sed 's/href="//g' | sort -u
 
 #printf "\n%s\n" "Do you want to see the live departure times from ""$depart""?"
@@ -8,7 +10,6 @@
 
 # varaible for time leaving two
 #timeleavingtwo=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$date"/today | grep "result" | awk '{print $6}' | sed 's/.......//g' | tail -5)
-
 
 # variable for the time now
 #now=$(date +%H:%M)
@@ -86,17 +87,17 @@ ptimearrivefour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing
 ptimearrivefive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$timing"/today | grep -i "ash" | awk '{print $2}' |sed -n '5p')
 
 # variable for delays
-delaysone=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result0" | awk '{print $6}' | sed 's/..........//g')
+#delaysone=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result0" | awk '{print $6}' | sed 's/..........//g')
 
-delaystwo=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result1" | awk '{print $6}' | sed 's/..........//g')
+#delaystwo=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result1" | awk '{print $6}' | sed 's/..........//g')
 
-delaysthree=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result2" | awk '{print $6}' | sed 's/..........//g')
+#delaysthree=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result2" | awk '{print $6}' | sed 's/..........//g')
 
-delaysfour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result3" | awk '{print $6}' | sed 's/..........//g')
+#delaysfour=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result3" | awk '{print $6}' | sed 's/..........//g')
 
-delaysfive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result4" | awk '{print $6}' | sed 's/..........//g')
+#delaysfive=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i -B20 "status late" | grep -i "result4" | awk '{print $6}' | sed 's/..........//g')
 
-delaystime=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i "status late" | awk '{print $4, $5}' | sed 's/.........//g')
+#delaystime=$(curl -s https://traintimes.org.uk/"$depart"/"$arrive"/"$time"/"$year"-"$month"-"$day" | grep -i "status late" | awk '{print $4, $5}' | sed 's/.........//g')
 
 # function for live train times
 results () {
